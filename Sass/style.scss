@@ -1,0 +1,322 @@
+// ------------------------variables
+
+// conversion from pixel to rem
+@function rem($var) {
+    $result : $var / 16;
+    @return $result * 1rem
+};
+
+
+// responsiveness
+
+$breakPoints : (
+    'extraSmall' : 20rem,
+    'small'  : 23.4375rem,
+    'large' : 45.5rem,
+    'tab' : 64rem,
+);
+
+
+@mixin responsive($size) {
+    $breakPoint : map-get($breakPoints, $size);
+
+    @media screen and (max-width: $breakPoint){
+        @content
+    }
+};
+
+
+// fonts
+$fontSize : rem(20);
+$libreFranklin : 'Libre Franklin', sans-serif;
+
+// colors
+$blue : hsl(223, 87%, 63%);
+$paleBlue : hsl(223, 100%, 88%);
+$lightRed : hsl(354, 100%, 66%);
+$gray : hsl(0, 0%, 59%);
+$veryDarkBlue : hsl(209, 33%, 12%);
+
+
+
+// ---------------------global styling
+
+html {
+    font-size: 100%;
+    font-family: $libreFranklin;
+}
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: white;
+
+    
+}
+
+.hero{
+    width: rem(640);
+    margin: rem(87) auto;
+    position: relative;
+
+    @include responsive(small) {
+        width: rem(318);
+        margin: rem(28.5) auto;
+
+    }
+
+
+    #notification{
+        display: none;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: -5%;
+        left: 0;
+        right: 0;
+        background-color: #d1e7dd;
+        border-color: #badbcc;
+        width: 100%;
+        height: rem(40);
+        transition: all 440ms ease-in-out;
+
+        @include responsive(tab){
+            top: 4%;
+        }
+
+        @include responsive(small) {
+            top: 3%;
+        }
+
+        p{
+            color: #0f5132;
+            font-weight: 700;
+            font-size: rem(20);
+            margin-bottom: 0;
+
+            @include responsive(small) {
+                font-size: rem(11);
+            }   
+        }
+
+        #close{
+            padding: rem(3) rem(6);
+            color: #d1e7dd;
+            background-color: #0f5132;
+            border: none;
+            transition: all 150ms ease-in-out;
+
+            &:active, &:focus{
+                border: none;
+                outline: none;
+            }
+
+            &:active{
+                color: #0f5132;
+                background-color: #d1e7dd;
+            }
+        }
+    }
+
+    &__header{
+        text-align: center;
+        width: 100%;
+        h2{
+            font-size: rem(25);
+            font-weight: 700;
+            color: $veryDarkBlue;
+            margin-bottom: rem(60);
+
+            @include responsive(small) {
+                font-size: rem(15);
+                margin-bottom: rem(45);
+            }
+        }
+
+        h1{
+            font-size: rem(44);
+            font-weight: 600;
+            color: $gray;
+            margin-bottom: rem(25);
+
+            @include responsive(small) {
+                font-size: rem(20.5);
+                margin-bottom: rem(22.5);
+            }
+
+            span{
+                font-weight: 700;
+                color: $veryDarkBlue;
+            }
+        }
+
+        p{
+            font-size: rem(19);
+            font-weight: 300;
+            color: $veryDarkBlue;
+            margin-bottom: rem(42);
+
+            @include responsive(small) {
+                font-size: rem(12);
+                margin-bottom: rem(33);
+            }
+        }
+    }
+
+
+    &__form{
+        width: 100%;
+        margin-bottom: rem(92);
+        height: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: flex-start;
+
+        @include responsive(small){
+            flex-flow: column wrap;
+        }
+
+        .email-box{
+            text-align: left;
+
+            @include responsive(small){
+                text-align: center;
+            }
+            
+            #email{
+            width: rem(421);
+            height: rem(56);
+            border: 1px solid $paleBlue;
+            border-radius: rem(30);
+            padding: rem(21) rem(31);
+            margin-right: rem(17);
+            font-size: rem(15);
+            color: $veryDarkBlue;
+            transition: all 150ms ease-in-out;
+
+            @include responsive(small){
+                width: rem(281.5);
+                margin-right: 0;
+                margin-bottom: rem(11);
+                font-size: rem(11.5);
+                padding: rem(15) rem(32);
+            }
+
+
+            &:focus{
+                outline: none;
+                border: 1px solid $blue;
+            }
+
+            &::placeholder{
+                color: $paleBlue;
+                opacity: .7;
+            }
+        }
+
+        #warning{
+            display: none;
+            font-size: rem(12);
+            color: $lightRed;
+            margin-bottom: rem(24);
+            margin-left: rem(17);
+            margin-top: rem(11);
+        }
+        }
+
+        #submit{
+            padding: rem(22) rem(63);
+            font-size: rem(16);
+            font-weight: 700;
+            background-color: $blue;
+            color: white;
+            border-radius: rem(30);
+            border: none;
+            transition: all 150ms ease-in-out;
+
+            @include responsive(small){
+                width: rem(281.5);
+                font-size: rem(12);
+                font-weight: 700;
+            }
+
+            &:active , &:focus{
+                border: none;
+                outline: none;
+            }
+            &:active{
+                background-color: lighten($blue, 10%);
+            }
+            
+        }
+
+        
+    }
+
+
+    &__img{
+        width: 100%;
+        margin-bottom: rem(68);
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .footer{
+        text-align: center;
+
+        &__icons{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            margin-bottom: rem(28);
+
+            @include responsive(tab){
+                justify-content: center;
+            }
+
+            a{
+                margin-right: 15px;
+                text-decoration: none;
+
+
+                i.fab{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid $paleBlue;
+                color: $blue;
+                border-radius: 50%;
+                width: 2.5rem;
+                height: 2.5rem;
+                transition: all 150ms ease-in-out; 
+                
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &:hover{
+                i.fab{
+                    color: white;
+                    background-color: $blue;
+                }
+    }
+    }
+        }
+
+        #cp{
+            font-size: rem(12);
+            color: $gray;
+        }
+    }
+}

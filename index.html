@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icon of the site -->
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./dist/all.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./dist/style.css">
+    <title>Ping coming soon page</title>
+</head>
+<!-- Focussing on email input field when page reloads -->
+<body>
+    <!-- Hero and the only section  -->
+    <section class="hero">
+        <!-- Intro of the hero section -->
+        <header class="hero__header"> 
+            <h2>
+                PING.
+            </h2>
+            <div id="notification">
+               <p>
+                    Congratulations! You have successfully subscribed
+               </p>
+
+               <button id="close">X</button>
+            </div>
+
+            <h1>
+                We are launching <span>soon!</span>
+            </h1>
+            
+            <p>
+                Subscribe and get notified
+            </p>
+        </header>
+
+        
+        <!-- Form of the hero section -->
+        <form name="form" class="hero__form" action="#">
+            <dic class="email-box">
+                <input name="email" id="email" name="email" placeholder="Your email address..." autocomplete="off" autofocus>
+                <p id="warning">
+                    Please provide a valid email address.
+                </p>
+            </dic>
+            <input id="submit" type="submit" name="submit" value="Notify Me"> 
+        </form>
+
+        <!-- Image dashboard of the hero section -->
+        <div class="hero__img">
+            <img src="./images/illustration-dashboard.png" alt="">
+        </div>
+
+        <footer class="footer">
+            <div class="footer__icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p id="cp">
+                &copy; Copyright Ping. All rights reserved.
+            </p>
+        </footer>
+    </section>
+
+    <script src="./Js/script.js"></script>
+</body>
+</html>
